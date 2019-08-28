@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .jumbotron {
+      text-align: center;
+      background-color: cornflowerblue;
+      text-decoration-color: white;
+    }
+
+    .h1 {
+      text-decoration-color: white;
+    }
+  </style>
+  <title>Train Schedule</title>
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">TRAIN HOPPING!</h1>
+      <p class="lead">All Aboard! Grab your Station</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="card text-white bg-warning mb-3">
+        <div class="card-header">Current Train Schedule
+        </div>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Train Name</th>
+          <th scope="col">Desination</th>
+          <th scope="col">Frequency (min)</th>
+          <th scope="col">Next Arrival</th>
+          <th scope="col">Minutes Away</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Amtrak</th>
+          <td>Seattle</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">TriMet</th>
+          <td>Idaho</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th scope="row">LightRail</th>
+          <td>Bend, Oregon</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <form>
+  </div>
+  <div class="container">
+    <div class="card text-white bg-secondary mb-3">
+      <div class="card-header">Add Train
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Name1">Train Name</label>
+      <input type="text" class="form-control" id="nameInputName1" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="destination1">Destination</label>
+      <input type="text" class="form-control" id="nameInputDestination1" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="time1">First Train Time (HH:mm - military time)</label>
+      <input type="number" class="form-control" id="nameInputTime1" placeholder="">
+    </div>
+    <div class="form-group">
+      <label for="rate1">Frequency (min)</label>
+      <input type="number" class="form-control" id="nameInputRate1" placeholder="">
+    </div>
+    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+    </form>
+  </div>
+  <!-- Optional JavaScript -->
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-database.js"></script>
+ <script type="text/javascript">
+
+  //rendering the new employees onto the table
+  var config = {
+    apiKey: "AIzaSyBuPYBolODRpBesltM4sCtck93ZRYleNVI",
+    authDomain: "mar3-8014f.firebaseapp.com",
+    databaseURL: "https://mar3-8014f.firebaseio.com",
+    projectId: "mar3-8014f",
+    storageBucket: "mar3-8014f.appspot.com",
+    messagingSenderId: "670522033199",
+    appId: "1:670522033199:web:5cfc1e5d675760dc"
+  };
+
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+  //values 
+  var name = "";
+  var role = "";
+  var startDate = "";
+  var monthlyRate = "";
+  
+//event listener
+  $('#submit').on('click', function (event) {
+    event.preventDefault();
+
+    //values grabbed from the textbox
+    name = $('#nameInputName1').val().trim();
+    role = $('#nameInputRole1').val().trim();
+    startDate = $('#nameInputDate1').val().trim();
+    monthlyRate = $('#nameInputRate1').val().trim();
+
+    database.ref().push({
+      name: name,
+      role: role,
+      startDate: startDate,
+      monthlyRate: monthlyRate,
+      dateAdded: firebase.database.ServerValue.TIMESTAMP
+    });
+  });
+
+database.ref().on("child_added", function(snapshot) {
+//adding employers to the table
+$('#table').append(" '<div class='well'><span class='nameInputName1'> " +
+childSnapshot.val().name + 
+" </span><span class='nameInputRole1'> " + childSnapshot.val().role +
+" </span><span class='nameInputDate1'> " + childSnapshot.val().startDate +
+" </span><span class='nameInputRate1'> " + childSnapshot.val().monthlyRate +
+" </span></div>");
+
+});
+
+//append rows of added employees to the table
+
+//firebase watcher and changing html to reflecr
+  // database.ref().on("value", function (snapshot) {
+  //   $("#nameInputName1").text(snapshot.val().name);
+  //   $("#nameInputRole1").text(snapshot.val().name);
+  //   $("#nameInputDate1").text(snapshot.val().name);
+  //   $("#nameInputRate1").text(snapshot.val().name);
+  // });
+
+  </script>
+</body>
+
+</html>
