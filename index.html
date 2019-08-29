@@ -134,9 +134,9 @@
 
   //values 
   var name = "";
-  var role = "";
-  var startDate = "";
-  var monthlyRate = "";
+  var destination = "";
+  var time = "";
+  var rate = "";
   
 //event listener
   $('#submit').on('click', function (event) {
@@ -144,9 +144,9 @@
 
     //values grabbed from the textbox
     name = $('#nameInputName1').val().trim();
-    role = $('#nameInputRole1').val().trim();
-    startDate = $('#nameInputDate1').val().trim();
-    monthlyRate = $('#nameInputRate1').val().trim();
+    destination = $('#nameInputDestination1').val().trim();
+    time = $('#nameInputTime1').val().trim();
+    rate = $('#nameInputRate1').val().trim();
 
     database.ref().push({
       name: name,
