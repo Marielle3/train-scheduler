@@ -1,3 +1,15 @@
+    // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCIa5HOT3mMakob_A8n3XRcysPuF11IaxY",
+    authDomain: "train-scheduler-ba734.firebaseapp.com",
+    databaseURL: "https://train-scheduler-ba734.firebaseio.com",
+    projectId: "train-scheduler-ba734",
+    storageBucket: "train-scheduler-ba734.appspot.com",
+    messagingSenderId: "186060136314",
+    appId: "1:186060136314:web:f745f5600cd38a66"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
   //values 
@@ -36,12 +48,12 @@ childSnapshot.val().name +
 
 });
 
-//append rows of added employees to the table
+//append rows of added train station to the table
 
 //firebase watcher and changing html to reflecr
   // database.ref().on("value", function (snapshot) {
   //   $("#nameInputName1").text(snapshot.val().name);
-  //   $("#nameInputRole1").text(snapshot.val().name);
-  //   $("#nameInputDate1").text(snapshot.val().name);
+  //   $("#nameInputDestination1").text(snapshot.val().name);
+  //   $("#nameInputTime1").text(snapshot.val().name);
   //   $("#nameInputRate1").text(snapshot.val().name);
   // });
