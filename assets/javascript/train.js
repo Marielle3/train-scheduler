@@ -28,18 +28,18 @@ $('#submit').on('click', function (event) {
    name: trainName,
    destination: trainDestination,
    rate: trainRate,
-   arrival: trainArrival,
-   minutesTil: trainTil
+   arrival: trainArrival
  };
 
-  database.ref().push(newTrain{
-  name: trainName,
-  destination: trainDestination,
-  rate: trainRate,
-  arrival: trainArrival,
-  minutesTil: trainTil,
-  dateAdded: firebase.database.ServerValue.TIMESTAMP
-  });
+   database.ref().push(newTrain)
+  //  {
+  // name: trainName,
+  // destination: trainDestination,
+  // rate: trainRate,
+  // arrival: trainArrival,
+  // minutesTil: trainTil,
+  // dateAdded: firebase.database.ServerValue.TIMESTAMP
+  // });
 
   //logging to the console
   console.log(newTrain.name);
