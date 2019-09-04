@@ -43,7 +43,7 @@
         </div>
       </div>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-hover" id="train-table">
       <thead>
         <tr>
           <th scope="col">Train Name</th>
@@ -57,23 +57,23 @@
         <tr>
           <th scope="row">Amtrak</th>
           <td>Seattle</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>120</td>
+          <td>7:00 PM</td>
+          <td>5</td>
         </tr>
         <tr>
           <th scope="row">TriMet</th>
           <td>Idaho</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>1600</td>
+          <td>3:30 PM</td>
+          <td>30</td>
         </tr>
         <tr>
           <th scope="row">LightRail</th>
           <td>Bend, Oregon</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>300</td>
+          <td>5:00 PM</td>
+          <td>45</td>
         </tr>
       </tbody>
     </table>
@@ -86,19 +86,19 @@
     </div>
     <div class="form-group">
       <label for="Name1">Train Name</label>
-      <input type="text" class="form-control" id="nameInputName1" placeholder="">
+      <input type="text" class="form-control" id="nameInput" placeholder="Landing Star">
     </div>
     <div class="form-group">
       <label for="destination1">Destination</label>
-      <input type="text" class="form-control" id="nameInputDestination1" placeholder="">
+      <input type="text" class="form-control" id="nameInputDestination" placeholder="Portland, OR">
     </div>
     <div class="form-group">
       <label for="time1">First Train Time (HH:mm - military time)</label>
-      <input type="text" class="form-control" id="nameInputTime1" placeholder="">
+      <input type="text" class="form-control" id="nameInputTime" placeholder="11:00PM">
     </div>
     <div class="form-group">
       <label for="rate1">Frequency (min)</label>
-      <input type="number" class="form-control" id="nameInputRate1" placeholder="">
+      <input type="number" class="form-control" id="nameInputRate" placeholder="5">
     </div>
     <button type="submit" class="btn btn-primary" id="submit">Submit</button>
     </form>
@@ -119,20 +119,6 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-<!-- <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyCIa5HOT3mMakob_A8n3XRcysPuF11IaxY",
-    authDomain: "train-scheduler-ba734.firebaseapp.com",
-    databaseURL: "https://train-scheduler-ba734.firebaseio.com",
-    projectId: "train-scheduler-ba734",
-    storageBucket: "train-scheduler-ba734.appspot.com",
-    messagingSenderId: "186060136314",
-    appId: "1:186060136314:web:f745f5600cd38a66"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-</script> -->
   <script type="text/javascript" src="assets/javascript/train.js">
   </script>
 </body>

@@ -12,44 +12,74 @@
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
-  //values 
-  var name = "";
-  var destination = "";
-  var time = "";
-  var rate = "";
+  //holding variables for new added trains 
+ var newTrain = {
+   name: trainName,
+   destination: trainDestination,
+   rate: trainRate,
+   arrival: trainArrival,
+   minutesTil: trainTil
+ };
+
+  //logging to the console
+  console.log(newTrain.name);
+  console.log(newTrain.destination);
+  console.log(newTrain.rate);
+  console.log(newTrain.arrival);
+  console.log(newTrain.minutesTil);
+
+  alert("New train successfully added");
+
+  //clear textbox 
   
 //event listener
   $('#submit').on('click', function (event) {
     event.preventDefault();
 
     //values grabbed from the textbox
-    name = $('#nameInputName1').val().trim();
-    destination = $('#nameInputDestination1').val().trim();
-    time = $('#nameInputTime1').val().trim();
-    rate = $('#nameInputRate1').val().trim();
+    trainName = $('#nameInputName').val().trim();
+    trainDestination = $('#nameInputDestination').val().trim();
+    trainRate = $('#nameInputRate').val().trim();
+    trainArrival = $('#nameInputTime').val().trim();
+    
 
     database.ref().push({
-      name: name,
-      destination: destination,
-      time: time,
-      rate: rate,
+      name: trainName,
+      destination: trainDestination,
+      rate: trainRate,
+      arrival: trainArrival,
+      minutesTil: trainTil
       dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
   });
 
 database.ref().on("child_added", function(snapshot) {
-//adding employers to the table
-$('#table').append(" '<div class='well'><span class='nameInputName1'> " +
-childSnapshot.val().name + 
-" </span><span class='nameInputDestination1'> " + childSnapshot.val().role +
-" </span><span class='nameInputTime1'> " + childSnapshot.val().startDate +
-" </span><span class='nameInputRate1'> " + childSnapshot.val().monthlyRate +
-" </span></div>");
+// //adding employers to the table
+// $('#table').append(" '<div class='well'><span class='nameInputName'> " +
+// childSnapshot.val().name + 
+// " </span><span class='nameInputDestination'> " + childSnapshot.val().destination +
+// " </span><span class='nameInputTime'> " + childSnapshot.val().time +
+// " </span><span class='nameInputRate'> " + childSnapshot.val()rate +
+// " </span></div>");
 
-});
+// });
 
+var trainName = childSnapshot.val().name;
+var trainDestination = childSnapshot.val().destination;
+var trainRate = childSnapshot.val().rate;
+var trainArrival = childSnapshot.val().arrival;
+var trainTil = childSnapshot.val().minutesTil;
+
+var newRow = $('<tr>').append(
+  $('<td>').text(trainName),
+  $('<td>').text(trainDestination),
+  $('<td>').text(trainRate),
+  $('<td>').text(trainArrival),
+  $('<td>').text(trainTil)
+);
 //append rows of added train station to the table
-
+$("#train-table > tbody").append(newRow);
+});
 //firebase watcher and changing html to reflecr
   // database.ref().on("value", function (snapshot) {
   //   $("#nameInputName1").text(snapshot.val().name);
