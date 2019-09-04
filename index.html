@@ -29,98 +29,106 @@
 </head>
 
 <body>
+  <!--Train Tracker-->
+  <div class="container">
 
-  <div class="jumbotron jumbotron-fluid">
-    <div class="container">
+    <div class="jumbotron jumbotron-fluid">
       <h1 class="display-3">TRAIN HOPPING!</h1>
       <p class="lead">All Aboard! Grab your Station</p>
     </div>
-  </div>
-  <div class="container">
-    <div class="panel panel-default">
-      <div class="card text-white bg-warning mb-3">
-        <div class="card-header">Current Train Schedule
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Current Train Schedule</div>
+
+            <table class="table table-hover" id="train-table">
+              <thead>
+                <tr>
+                  <th scope="col">Train Name</th>
+                  <th scope="col">Desination</th>
+                  <th scope="col">Frequency (min)</th>
+                  <th scope="col">Next Arrival</th>
+                  <th scope="col">Minutes Away</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Amtrak</th>
+                  <td>Seattle</td>
+                  <td>120</td>
+                  <td>7:00 PM</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <th scope="row">TriMet</th>
+                  <td>Idaho</td>
+                  <td>1600</td>
+                  <td>3:30 PM</td>
+                  <td>30</td>
+                </tr>
+                <tr>
+                  <th scope="row">LightRail</th>
+                  <td>Bend, Oregon</td>
+                  <td>300</td>
+                  <td>5:00 PM</td>
+                  <td>45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    <table class="table table-hover" id="train-table">
-      <thead>
-        <tr>
-          <th scope="col">Train Name</th>
-          <th scope="col">Desination</th>
-          <th scope="col">Frequency (min)</th>
-          <th scope="col">Next Arrival</th>
-          <th scope="col">Minutes Away</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Amtrak</th>
-          <td>Seattle</td>
-          <td>120</td>
-          <td>7:00 PM</td>
-          <td>5</td>
-        </tr>
-        <tr>
-          <th scope="row">TriMet</th>
-          <td>Idaho</td>
-          <td>1600</td>
-          <td>3:30 PM</td>
-          <td>30</td>
-        </tr>
-        <tr>
-          <th scope="row">LightRail</th>
-          <td>Bend, Oregon</td>
-          <td>300</td>
-          <td>5:00 PM</td>
-          <td>45</td>
-        </tr>
-      </tbody>
-    </table>
-    <form>
-  </div>
-  <div class="container">
-    <div class="card text-white bg-warning mb-3">
-      <div class="card-header">Add Train
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card text-white bg-warning mb-3">
+          <div class="card-header">Add Train</div>
+          <div class="card-body">
+
+            <form>
+              <div class="form-group">
+                <label for="Name1">Train Name</label>
+                <input type="text" class="form-control" id="nameInput" placeholder="Landing Star">
+              </div>
+              <div class="form-group">
+                <label for="destination1">Destination</label>
+                <input type="text" class="form-control" id="nameInputDestination" placeholder="Portland, OR">
+              </div>
+              <div class="form-group">
+                <label for="time1">First Train Time (HH:mm - military time)</label>
+                <input type="text" class="form-control" id="nameInputTime" placeholder="11:00PM">
+              </div>
+              <div class="form-group">
+                <label for="rate1">Frequency (min)</label>
+                <input type="number" class="form-control" id="nameInputRate" placeholder="5">
+              </div>
+              <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="Name1">Train Name</label>
-      <input type="text" class="form-control" id="nameInput" placeholder="Landing Star">
-    </div>
-    <div class="form-group">
-      <label for="destination1">Destination</label>
-      <input type="text" class="form-control" id="nameInputDestination" placeholder="Portland, OR">
-    </div>
-    <div class="form-group">
-      <label for="time1">First Train Time (HH:mm - military time)</label>
-      <input type="text" class="form-control" id="nameInputTime" placeholder="11:00PM">
-    </div>
-    <div class="form-group">
-      <label for="rate1">Frequency (min)</label>
-      <input type="number" class="form-control" id="nameInputRate" placeholder="5">
-    </div>
-    <button type="submit" class="btn btn-primary" id="submit">Submit</button>
-    </form>
-  </div>
-  <!-- Optional JavaScript -->
- <!-- The core Firebase JS SDK is always required and must be listed first -->
- <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
-  <!-- Firebase References -->
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 
-  <script type="text/javascript" src="assets/javascript/train.js">
-  </script>
+    <script type="text/javascript" src="assets/javascript/train.js">
+    </script>
 </body>
 
 </html>
