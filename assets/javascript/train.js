@@ -46,11 +46,15 @@ $('#submit').on('click', function (event) {
 });
 
 $('#submit').on('click', function (table){
+  // display arrival time, stuck here..
+var currentTime = moment();
 var newRow = $('<tr>').append(
   $('<th scope="row">').text(trainName),
   $('<td>').text(trainDestination),
   $('<td>').text(trainRate),
   $('<td>').text(trainArrival)
+
+
 );
 
 //append rows of added train station to the table
