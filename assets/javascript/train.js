@@ -43,12 +43,6 @@ $('#submit').on('click', function (event) {
 
   alert("New train successfully added");
 
-  //clear textbox 
-  $('#nameInput').val("");
-  $('#nameInputDestination').val("");
-  $('#nameInputRate').val("");
-  $('#nameInputTime').val("");
-
 });
 
 $('#submit').on('click', function (table){
