@@ -28,18 +28,11 @@ $('#submit').on('click', function (event) {
    name: trainName,
    destination: trainDestination,
    rate: trainRate,
-   arrival: trainArrival
+   arrival: trainArrival,
+   dateAdded: firebase.database.ServerValue.TIMESTAMP
  };
 
-   database.ref().push(newTrain)
-  //  {
-  // name: trainName,
-  // destination: trainDestination,
-  // rate: trainRate,
-  // arrival: trainArrival,
-  // minutesTil: trainTil,
-  // dateAdded: firebase.database.ServerValue.TIMESTAMP
-  // });
+   database.ref().push(newTrain);
 
   //logging to the console
   console.log(newTrain.name);
@@ -58,22 +51,15 @@ $('#submit').on('click', function (event) {
 
 });
 
-
-database.ref().on("child_added", function(snapshot) {
-
-
-var trainName = childSnapshot.val().name;
-var trainDestination = childSnapshot.val().destination;
-var trainRate = childSnapshot.val().rate;
-var trainArrival = childSnapshot.val().arrival;
-
+$('#submit').on('click', function (table){
 var newRow = $('<tr>').append(
-  $('<td>').text(trainName),
+  $('<th scope="row">').text(trainName),
   $('<td>').text(trainDestination),
   $('<td>').text(trainRate),
   $('<td>').text(trainArrival)
 );
+
 //append rows of added train station to the table
-$("#train-table > tbody").append(newRow);
+$("#content-body").append(newRow);
 });
 
